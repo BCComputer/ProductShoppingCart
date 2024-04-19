@@ -99,6 +99,7 @@ public class ProductImpl {
                 }
             } catch (NumberFormatException e) {
                 ssd = ssd - 1;
+                JOptionPane.showMessageDialog(null, "Number should be positive");
             }
         } while ((ssd < 1));
         return ssd;
@@ -114,6 +115,7 @@ public class ProductImpl {
                 }
             } catch (NumberFormatException e) {
                 ram = ram - 1;
+                JOptionPane.showMessageDialog(null, "Number should be positive");
             }
         } while ((ram < 1));
         return ram;
@@ -144,6 +146,7 @@ public class ProductImpl {
                 }
             } catch (NumberFormatException e) {
                 screenSize = screenSize - 1;
+                JOptionPane.showMessageDialog(null, "Number should be positive");
             }
         } while ((screenSize < 1));
         return screenSize;
@@ -159,6 +162,7 @@ public class ProductImpl {
                 }
             } catch (NumberFormatException e) {
                 lumen = lumen - 1;
+                JOptionPane.showMessageDialog(null, "Number should be positive");
             }
         } while ((lumen < 1));
         return lumen;
@@ -174,6 +178,7 @@ public class ProductImpl {
                 }
             } catch (NumberFormatException e) {
                 watts = watts - 1;
+                JOptionPane.showMessageDialog(null, "Number should be positive");
             }
         } while ((watts < 1));
         return watts;
@@ -200,6 +205,7 @@ public class ProductImpl {
                 }
             } catch (NumberFormatException e) {
                 ratings = ratings - 1;
+                JOptionPane.showMessageDialog(null, "Number should be positive");
             }
         } while ((ratings < 1));
         return ratings;
@@ -215,6 +221,7 @@ public class ProductImpl {
                 }
             } catch (NumberFormatException e) {
                 length = length - 1;
+                JOptionPane.showMessageDialog(null, "Number should be positive");
             }
         } while ((length < 1));
         return length;
@@ -230,6 +237,7 @@ public class ProductImpl {
                 }
             } catch (NumberFormatException e) {
                 height = height - 1;
+                JOptionPane.showMessageDialog(null, "Number should be positive");
             }
         } while ((height < 1));
         return height;
@@ -245,11 +253,11 @@ public class ProductImpl {
                 }
             } catch (NumberFormatException e) {
                 weight = weight - 1;
+                JOptionPane.showMessageDialog(null, "Number should be positive");
             }
         } while ((weight < 1));
         return weight;
     }
-
     public static double inputPrice() {
         double price = 0;
         do {
@@ -259,7 +267,9 @@ public class ProductImpl {
                     JOptionPane.showMessageDialog(null, "Number should be positive");
                 }
             } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Number should be positive");
                 price = price - 1;
+                JOptionPane.showMessageDialog(null, "Number should be positive");
             }
         } while ((price < 1));
         return price;
