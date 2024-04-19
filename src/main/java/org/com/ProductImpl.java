@@ -2,6 +2,7 @@ package org.com;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ProductImpl {
@@ -24,14 +25,17 @@ public class ProductImpl {
                     printProduct(products);
                     break;
                 case 3:
+                    removeProduct(products);
+                    break;
+                case 4:
                     quit();
                     break;
                 default:
-                    if (response != 3) {
+                    if (response != 4) {
                         JOptionPane.showMessageDialog(null, "Please select an option in the drop down menu");
                     }
             }
-        } while (response != 3);
+        } while (response != 4);
         return response;
     }
 
@@ -41,7 +45,6 @@ public class ProductImpl {
         List<Light> lights = new ArrayList<>();
 
         if (productChoice == 1) {
-            //nt screenSize, double ram, double ssd, double processor
             laptops.add(new Laptop(id, inputName(), inputPrice(), inputRating(), inputScreenSize(), inputRAM(), getSSD(), inputProcessor()));
             id++;
         } else if (productChoice == 2) {
@@ -56,6 +59,16 @@ public class ProductImpl {
         products.addAll(lights);
     }
 
+    public static void removeProduct(List<Product> products){
+
+        int idToRemove = inputRemoveId();
+        for (int i = 0; i < products.size(); i++) {
+            System.out.println(products.get(i).getId());;
+            if (products.get(i).getId() == idToRemove) {
+                products.remove(products.get(i));
+            }
+        }
+    }
     public static void printProduct(List<Product> products) {
         JOptionPane.showMessageDialog(null, "Products Lists ____________________________\n\n" +
                 products.toString());
@@ -104,6 +117,21 @@ public class ProductImpl {
             }
         } while ((ram < 1));
         return ram;
+    }
+
+    public static int inputRemoveId() {
+        int screenSize = 0;
+        do {
+            try {
+                screenSize = Integer.parseInt(JOptionPane.showInputDialog("Enter ID from list that you want to remove:"));
+                if (screenSize < 1) {
+                    JOptionPane.showMessageDialog(null, "Number should be positive");
+                }
+            } catch (NumberFormatException e) {
+                screenSize = screenSize - 1;
+            }
+        } while ((screenSize < 1));
+        return screenSize;
     }
 
     public static int inputScreenSize() {
@@ -261,7 +289,7 @@ public class ProductImpl {
 
     public static int createMenu() {
         final int MIN_OPTION = 1;
-        final int MAX_OPTION = 3;
+        final int MAX_OPTION = 4;
         int menuChoice;
         do {
             try {
@@ -269,7 +297,8 @@ public class ProductImpl {
                         "Enter your selection:"
                                 + "\n[1] Add Products"
                                 + "\n[2] Display All Products"
-                                + "\n[3] Quit"
+                                + "\n[3] Remove Products by ID"
+                                + "\n[4] Quit"
                 ));
             } catch (NumberFormatException e) {
                 menuChoice = 0;
