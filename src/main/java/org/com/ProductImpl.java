@@ -2,7 +2,6 @@ package org.com;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class ProductImpl {
@@ -25,20 +24,67 @@ public class ProductImpl {
                     printProduct(products);
                     break;
                 case 3:
-                    removeProduct(products);
+                    printLaptop(products);
                     break;
                 case 4:
+                    getTableProduct(products);
+                    break;
+                case 5:
+                    getLightProduct(products);
+                    break;
+                case 6:
+                    removeProduct(products);
+                    break;
+                case 7:
                     quit();
                     break;
                 default:
-                    if (response != 4) {
+                    if (response != 7) {
                         JOptionPane.showMessageDialog(null, "Please select an option in the drop down menu");
                     }
             }
-        } while (response != 4);
+        } while (response != 7);
         return response;
     }
-
+    public static void getLightProduct(List<Product> products){
+        List<Light> lights = new ArrayList<>();
+        for (Product product : products) {
+            if (product instanceof Light) {
+                lights.add((Light) product);
+            }
+        }
+        printLightProduct(lights);
+    }
+    public static void printLightProduct(List<Light> lights) {
+        JOptionPane.showMessageDialog(null, "Products Lists ____________________________\n\n" +
+                lights.toString());
+    }
+    public static void getTableProduct(List<Product> products){
+        List<Table> tables = new ArrayList<>();
+        for (Product product : products) {
+            if (product instanceof Table) {
+                tables.add((Table) product);
+            }
+        }
+        printTableProduct(tables);
+    }
+    public static void printTableProduct(List<Table> tables) {
+        JOptionPane.showMessageDialog(null, "Products Lists ____________________________\n\n" +
+                tables.toString());
+    }
+    public static void printLaptop(List<Product> products){
+        List<Laptop> laptops = new ArrayList<>();
+        for (Product product : products) {
+            if (product instanceof Laptop) {
+                laptops.add((Laptop) product);
+            }
+        }
+        printLaptopProducts(laptops);
+    }
+    public static void printLaptopProducts(List<Laptop> laptops) {
+        JOptionPane.showMessageDialog(null, "Products Lists ____________________________\n\n" +
+                laptops.toString());
+    }
     public static void addProduct(int productChoice, List<Product> products) {
         List<Laptop> laptops = new ArrayList<>();
         List<Table> tables = new ArrayList<>();
@@ -299,7 +345,7 @@ public class ProductImpl {
 
     public static int createMenu() {
         final int MIN_OPTION = 1;
-        final int MAX_OPTION = 4;
+        final int MAX_OPTION = 7;
         int menuChoice;
         do {
             try {
@@ -307,14 +353,17 @@ public class ProductImpl {
                         "Enter your selection:"
                                 + "\n[1] Add Products"
                                 + "\n[2] Display All Products"
-                                + "\n[3] Remove Products by ID"
-                                + "\n[4] Quit"
+                                + "\n[3] Display Laptops"
+                                + "\n[4] Display Tables"
+                                + "\n[5] Display Lights"
+                                + "\n[6] Remove Products by ID"
+                                + "\n[7] Quit"
                 ));
             } catch (NumberFormatException e) {
                 menuChoice = 0;
             }
             if (menuChoice < MIN_OPTION || menuChoice > MAX_OPTION) {
-                JOptionPane.showMessageDialog(null, "Invalid choice. Please enter the number between 1 to 4 menu option.");
+                JOptionPane.showMessageDialog(null, "Invalid choice. Please enter the number between 1 to 7 menu option.");
             }
         } while (menuChoice < MIN_OPTION || menuChoice > MAX_OPTION);
 
