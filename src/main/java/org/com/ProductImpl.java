@@ -304,7 +304,7 @@ public class ProductImpl {
                 menuChoice = 0;
             }
             if (menuChoice < MIN_OPTION || menuChoice > MAX_OPTION) {
-                JOptionPane.showMessageDialog(null, "Invalid choice. Please enter the number between 1 to 3 menu option.");
+                JOptionPane.showMessageDialog(null, "Invalid choice. Please enter the number between 1 to 4 menu option.");
             }
         } while (menuChoice < MIN_OPTION || menuChoice > MAX_OPTION);
 

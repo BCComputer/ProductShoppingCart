@@ -1,7 +1,7 @@
 package org.com;
 
 public class Laptop extends Product {
-    //Phase1
+
     int screenSize;
     double ram;
     double ssd;
